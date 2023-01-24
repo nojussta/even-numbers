@@ -10,7 +10,7 @@ public class Main {
         System.out.println(n);
         var result = selectEvenOccurrences(n);
         System.out.println(result);
-        int[] input = {1, 2, 3, 66, 66, 51};
+        int[] input = {1, 2, 3};
         System.out.println(findMostFrequent(input));
     }
 
@@ -45,7 +45,7 @@ public class Main {
                 maxIndex = indexMap.get(key);
             }
         }
-
+        if (maxIndex == 0) return -1;
         return maxIndex;
     }
 
