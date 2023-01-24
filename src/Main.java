@@ -20,23 +20,40 @@ public class Main {
 //    paskutinę jo vietą pradiniame masyve
 //    int[] input = {1, 2, 3} -1 turėtų lygtais grąžinti
     public static int findMostFrequent(int[] input) {
-        Map<Integer, Integer> m = new HashMap<Integer, Integer>();
-
+        Map<Integer, Integer> hash = new HashMap<Integer, Integer>();
+//        int max = -1;
+//        int index = -1;
+//        for (int i = 0; i < input.length; i++){
+//            if (hash.containsKey(input[i])){
+//                int value = hash.get(i);
+//                value++;
+//                hash.get(value);
+//                if (hash.get(i) >= max){
+//                    max = hash.get(input[i]);
+//                    index = i;
+//                }
+//            }
+//            hash.get(input[i]);
+//        }
+//        if (max == 1 && max == -1){
+//            return -1;
+//        }
+//        return index;
         for (int i : input) {
-            Integer freq = m.get(i);
-            m.put(i, (freq == null) ? 1 : freq + 1);
+            Integer freq = hash.get(i);
+            hash.put(i, (freq == null) ? 1 : freq + 1);
         }
 
         int max = -1;
+        int index = 0;
         int mostFrequent = -1;
 
-        for (Map.Entry<Integer, Integer> e : m.entrySet()) {
+        for (Map.Entry<Integer, Integer> e : hash.entrySet()) {
             if (e.getValue() > max) {
                 mostFrequent = e.getKey();
                 max = e.getValue();
             }
         }
-
         return mostFrequent;
     }
 
