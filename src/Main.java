@@ -1,26 +1,32 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Integer[] numbers = new Integer[]{1, 2, 1, 3, 4, 5, 6, 2, 4, 6};
+        Integer[] numbers = new Integer[]{2, 3, 5, 6, 6, 2, 4, 8, 9, 4, 4, 6, 10, 12, 10};
+        int[] nmb = new int[]{2, 3, 5, 6, 7, 11, 9, 6, 2, 4, 8, 9, 4, 4, 6, 10, 12, 10};
         var n = numbersInput(numbers);
         System.out.println(n);
-        var result = selectEvenOccurrences(n);
+        var result = selectEvenOccurrences(nmb);
         System.out.println(result);
     }
 
-    public static ArrayList<Integer> selectEvenOccurrences(ArrayList<Integer> numbers) {
-        ArrayList<Integer> evenOcc = new ArrayList<>();
-        var n = numbers.size();
-        for (int i = 0; i < n; i++) {
-            if ((numbers.get(i) % 2 == 0)) {
-                evenOcc.add(numbers.get(i));
+    public static ArrayList<Integer> selectEvenOccurrences(int[] input) {
+        HashMap<Integer, Integer> firstOccurrences = new HashMap<>();
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < input.length; i++) {
+            if (input[i] % 2 == 0) {
+                if (!firstOccurrences.containsKey(input[i])) {
+                    firstOccurrences.put(input[i], i);
+                    result.add(input[i]);
+                } else {
+                    result.add(input[i]);
+                }
             }
         }
-        return evenOcc;
+        return result;
     }
+
 
     public static ArrayList<Integer> numbersInput(Integer[] list) {
         ArrayList<Integer> numbers = new ArrayList<>();
